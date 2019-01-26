@@ -5,7 +5,8 @@
  */
 package tiralabra;
 import Preprocess.Tokenizer;
-import FileReader.FileReader;
+import FileRead.FileRead;
+import java.util.List;
 /**
  *
  * @author jan
@@ -22,10 +23,12 @@ public class TiraLabra {
         for (String string : b) {
             System.out.println(string);
         }
-        FileReader fileReader = new FileReader();
-        String[] s = fileReader.FileAsString();
-        for (String string : s) {
+        FileRead fileReader = new FileRead();
+        fileReader.openFile();
+        List<String> list = fileReader.readFile();
+        for (String string : list) {
             System.out.println(string);
+            
         }
     }
 }
