@@ -1,4 +1,8 @@
-
+/**
+ * Contains a HashSet of all stopwords that will be used in lemmatization
+ * will be used to detect words like the, a and an
+ * Has its own fileread method, to import the stopwords on initialization
+ */
 package Preprocess;
 
 import FileRead.FileRead;
@@ -9,7 +13,8 @@ import java.util.HashSet;
  * @author jan
  */
 public class Stopworder {
-    HashSet<String> stopwordlist;
+    private HashSet<String> stopwordlist;
+            
 
     public Stopworder() {
         FileRead fr = new FileRead();

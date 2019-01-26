@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Tokenizes all words in a string
+ * "A little list" becomes -> "a" "little" "list"
+ * Used in conjunction with lemmatization
+ * @param line can be any line of string 
  */
 package Preprocess;
 
