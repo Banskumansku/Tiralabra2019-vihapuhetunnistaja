@@ -42,8 +42,6 @@ public class FileRead {
     }
 
     public void openFile() {
-        System.out.println(System.getProperty("user.dir"));
-        // pass the path to the file as a parameter 
         Scanner asker = new Scanner(System.in);
         System.out.println("Give the name of the file \nMust be in .txt format");
         // this will be used for inputting various training files etc
