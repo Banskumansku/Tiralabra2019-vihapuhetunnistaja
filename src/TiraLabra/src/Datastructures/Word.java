@@ -35,12 +35,28 @@ public class Word {
         normCount++;
     }
 
+    public int getHateCount() {
+        return hateCount;
+    }
+
+    public int getNormCount() {
+        return normCount;
+    }
+
     //calculates the probability of
     //and gives the smallest and biggest probabilities more precedence
     public void calculateProbability(int totHate, int totNorm) {
         hateRate = hateCount / (float) totHate;
         normRate = normCount / (float) totNorm;
-
+        if (totNorm == 0) {
+            System.out.println("Get a better dataset");
+            normRate = 0.001f;
+        }
+        if (totHate == 0) {
+            System.out.println("Get a better dataset");
+            hateRate = 0.001f;
+        }
+        
         if (hateRate + normRate > 0) {
             probOfHate = hateRate / (hateRate + normRate);
         }
@@ -60,6 +76,10 @@ public class Word {
 
     public float getHateRate() {
         return hateRate;
+    }
+
+    public void setHateRate(float hateRate) {
+        this.hateRate = hateRate;
     }
 
     public float getNormRate() {

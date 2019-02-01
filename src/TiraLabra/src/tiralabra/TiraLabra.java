@@ -18,5 +18,6 @@ public class TiraLabra {
         classifier.trainClassifier();
         String test = "";
         System.out.println(CalculateBayes.percentageBayes(classifier.testClassifier(test)));
+        UI ui = new UI();
     }
 }

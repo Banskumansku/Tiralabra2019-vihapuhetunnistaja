@@ -41,7 +41,7 @@ public class FileRead {
         return set;
     }
 
-    public void openFile() {
+    public boolean openFile() {
         Scanner asker = new Scanner(System.in);
         System.out.println("Give the name of the file \nMust be in .txt format");
         // this will be used for inputting various training files etc
@@ -49,10 +49,11 @@ public class FileRead {
         String fileName = asker.nextLine();
         try {
             this.scanner = new Scanner(new File(fileName));
+            return true;
         } catch (Exception e) {
             System.err.println("No file found");
         }
-
+        return false;
     }
 
     public List<String> readFile() {
