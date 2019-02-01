@@ -17,7 +17,7 @@ public class CalculateBayes {
     public CalculateBayes() {
     }
 
-    public boolean calculateBayes(ArrayList<Word> line) {
+    public static boolean calculateBayes(ArrayList<Word> line) {
         float probabilityOfPositiveProduct = 1.0f;
         float probabilityOfNegativeProduct = 1.0f;
         for (int i = 0; i < line.size(); i++) {
@@ -26,14 +26,10 @@ public class CalculateBayes {
             probabilityOfNegativeProduct *= (1.0f - word.getProbOfHate());
         }
         float probOfHate = probabilityOfPositiveProduct / (probabilityOfPositiveProduct + probabilityOfNegativeProduct);
-        if (probOfHate > 0.85f) {
-            return true;
-        } else {
-            return false;
-        }
+        return probOfHate > 0.85f;
     }
 
-    public float percentageBayes(ArrayList<Word> line) {
+    public static float percentageBayes(ArrayList<Word> line) {
         float probabilityOfPositiveProduct = 1.0f;
         float probabilityOfNegativeProduct = 1.0f;
         for (int i = 0; i < line.size(); i++) {

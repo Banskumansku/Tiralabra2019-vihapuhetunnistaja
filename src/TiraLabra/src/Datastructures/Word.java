@@ -11,7 +11,7 @@ package Datastructures;
  */
 public class Word {
 
-    private String word;	//the word itself
+    private final String word;	//the word itself
     private int hateCount;	//number of this words appearances in hate speech
     private int normCount;	//number of this words appearances in normal speech
     private float hateRate;	//spamCount divided by total hate count
@@ -37,20 +37,23 @@ public class Word {
 
     //calculates the probability of
     //and gives the smallest and biggest probabilities more precedence
-    public void calculateProbability(int totHate, int NormHam) {
+    public void calculateProbability(int totHate, int totNorm) {
         hateRate = hateCount / (float) totHate;
-        normRate = normCount / (float) NormHam;
+        normRate = normCount / (float) totNorm;
 
         if (hateRate + normRate > 0) {
             probOfHate = hateRate / (hateRate + normRate);
         }
         if (probOfHate < 0.01f) {
             probOfHate = 0.01f;
-        } else if (probOfHate > 0.99f) {
-            probOfHate = 0.99f;
+        } else if (probOfHate > 0.9999f) {
+            probOfHate = 0.9999f;
         }
     }
 
+    
+    
+    
     public String getWord() {
         return word;
     }

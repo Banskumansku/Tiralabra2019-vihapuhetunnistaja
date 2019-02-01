@@ -7,14 +7,11 @@ package Algorithms;
 
 import Datastructures.Word;
 import FileRead.FileRead;
+import FileRead.TableParser;
 import Preprocess.Tokenizer;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
@@ -28,26 +25,32 @@ public class Classifier {
     Tokenizer tokenizer = new Tokenizer();
     CalculateBayes bayes = new CalculateBayes();
     private final FileRead fileRead;
+    private final TableParser tableParser;
     private final HashSet<String> stopwords;
+    private final CSVParser csvParser;
+    private int totalHatecount;
+    private int totalNormcount;
 
     public Classifier() {
         this.fileRead = new FileRead();
+        this.tableParser = new TableParser();
         this.stopwords = fileRead.importStopword();
+        this.csvParser = TableParser.parser();
         this.wordObjects = new HashMap<>();
+        this.totalHatecount = 0;
+        this.totalNormcount = 0;
     }
 
-    // 
+// 
     public void trainClassifier() {
-        String line = "";
-        int totalHatecount = 0;
-        int totalNormcount = 0;
-        String file = System.getProperty("user.dir") + "/lib/hate-speech-classifier.csv";
-        try (BufferedReader br = new BufferedReader(new FileReader(file));
-                CSVParser csvParser = new CSVParser(br, CSVFormat.DEFAULT);) {
-            for (CSVRecord csvRecord : csvParser) {
-                // Accessing Values by Column Index
-                boolean hate = isItHate(csvRecord.get(5));
-                String[] tokenizedLine = tokenizer.tokenize(csvRecord.get(19));
+        String file = System.getProperty("user.dir") + "/lib/alltextsandannotations.csv";
+        int stopwordsA = 0;
+        for (CSVRecord csvRecord : csvParser) {
+            // Accessing Values by Column Index
+            //if (!relevant(csvRecord.get(3))) {
+            boolean hate = isItHate(csvRecord.get(53));
+            if (!relevant(csvRecord.get(53))) {
+                String[] tokenizedLine = tokenizer.tokenize(csvRecord.get(1));
                 for (String string : tokenizedLine) {
                     if (wordObjects.containsKey(string)) {
                         addClass(string, hate);
@@ -65,48 +68,22 @@ public class Classifier {
                         } else {
                             totalNormcount++;
                         }
+                    } else {
+                        stopwordsA++;
                     }
                 }
             }
-            //for (int i = 0; i < 1000; i++) {
-            int i = 0;
-            /* while ((line = br.readLine()) != null) {
-                line = line + br.readLine();
-                i++;
-                // use comma as separator
-                String[] separatedLine = line.split(",");
-                boolean hate = isItHate(separatedLine[0]);
-                String[] tokenizedLine = tokenizer.tokenize(separatedLine[4]);
-                for (String string : tokenizedLine) {
-                    if (wordObjects.containsKey(string)) {
-                        addClass(string, hate);
-                        if (hate) {
-                            totalHatecount++;
-                        } else {
-                            totalNormcount++;
-                        }
-                    } else if (!stopwords.contains(string)) {
-                        Word word = new Word(string);
-                        wordObjects.put(string, word);
-                        addClass(string, hate);
-                        if (hate) {
-                            totalHatecount++;
-                        } else {
-                            totalNormcount++;
-                        }
-                    }
-                }
-                if (i == 100) {
-                    break;
-                }
-            }*/
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         for (String key : wordObjects.keySet()) {
+            // TFIDF calculation here
             wordObjects.get(key).calculateProbability(totalHatecount, totalNormcount);
         }
+
+    }
+
+    public boolean relevant(String classifier) {
+        String relevance = "idk/skip";
+        return classifier.equals(relevance);
     }
 
     public void addClass(String word, boolean hate) {
@@ -118,13 +95,7 @@ public class Classifier {
     }
 
     public boolean isItHate(String classifier) {
-        if (classifier.equals("The tweet is not offensive")
-                || classifier.equals("The tweet uses offensive language but not hate speech")) {
-            return false;
-        } else {
-            return true;
-        }
-
+        return classifier.equals("hate");
     }
 
     public ArrayList<Word> testClassifier(String test) {
@@ -135,18 +106,15 @@ public class Classifier {
             if (!wordObjects.containsKey(wordString)) {
                 if (!stopwords.contains(wordString)) {
                     Word w = new Word(wordString);
-                    w.setProbOfHate(0.40f);
+                    w.setProbOfHate(0.5f);
                     wordObjects.put(wordString, w);
                     calculable.add(this.wordObjects.get(wordString));
                 }
-            } else if (wordObjects.containsKey(wordString)){
+            } else if (wordObjects.containsKey(wordString)) {
                 calculable.add(this.wordObjects.get(wordString));
             }
         }
         return calculable;
     }
-    
-    
-    
 
 }

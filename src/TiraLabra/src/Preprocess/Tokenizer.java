@@ -17,11 +17,9 @@ public class Tokenizer {
     }
 
     public String[] tokenize(String line) {
+        String toLowerCase = line.toLowerCase();
         String[] tokens;
-        tokens = line.split("([.,!?:;\"-]|\\s)+");
-        for (int i = 0; i < tokens.length; i++) {
-            String toLowerCase = tokens[i].toLowerCase();
-        }
+        tokens = toLowerCase.split("([.,!?:;\"-]|\\s)+");
         return tokens;
     }
     // Breaks up lines of text into individual tokens
