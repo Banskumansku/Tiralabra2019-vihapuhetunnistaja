@@ -25,6 +25,10 @@ public class FileRead {
         this.scanner = null;
     }
 
+    /**
+     *
+     * @return makes stopword set to be used in classifying
+     */
     public HashSet<String> importStopword() {
         //this method is only used for importing the stopwords
         HashSet<String> set = new HashSet<>();
@@ -41,6 +45,10 @@ public class FileRead {
         return set;
     }
 
+    /**
+     *
+     * @return opens txt file to be analyzed
+     */
     public boolean openFile() {
         Scanner asker = new Scanner(System.in);
         System.out.println("Give the name of the file \nMust be in .txt format");
@@ -56,6 +64,10 @@ public class FileRead {
         return false;
     }
 
+    /**
+     *
+     * @return makes file into arraylist object
+     */
     public List<String> readFile() {
         List<String> lista = new ArrayList<>();
         while (this.scanner.hasNext()) {

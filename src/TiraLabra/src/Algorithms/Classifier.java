@@ -12,7 +12,6 @@ import Preprocess.Tokenizer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 /**
@@ -21,13 +20,12 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class Classifier {
 
-    private HashMap<String, Word> wordObjects;
+    private final HashMap<String, Word> wordObjects;
     Tokenizer tokenizer = new Tokenizer();
     CalculateBayes bayes = new CalculateBayes();
     private final FileRead fileRead;
     private final TableParser tableParser;
     private final HashSet<String> stopwords;
-    private final CSVParser csvParser;
     private int totalHatecount;
     private int totalNormcount;
 
@@ -35,16 +33,28 @@ public class Classifier {
         this.fileRead = new FileRead();
         this.tableParser = new TableParser();
         this.stopwords = fileRead.importStopword();
-        this.csvParser = TableParser.parser();
         this.wordObjects = new HashMap<>();
         this.totalHatecount = 0;
         this.totalNormcount = 0;
     }
 
 // 
-    public void trainClassifier() {
-        String file = System.getProperty("user.dir") + "/lib/alltextsandannotations.csv";
-        int stopwordsA = 0;
+
+    /**
+     *
+     * @param file if default uses default dataset from stormfront
+     * Can also take any properly formatted csv file
+     */
+    public void trainClassifier(String file) {
+        //String file = System.getProperty("user.dir") + "/lib/alltextsandannotations.csv";
+        Iterable<CSVRecord> csvParser;
+        if (file.equals("default")) {
+            csvParser = TableParser.parserDefault();
+        } else {
+            csvParser = TableParser.parser();
+        }
+        
+
         for (CSVRecord csvRecord : csvParser) {
             // Accessing Values by Column Index
             //if (!relevant(csvRecord.get(3))) {
@@ -69,24 +79,26 @@ public class Classifier {
                             totalNormcount++;
                         }
                     } else {
-                        stopwordsA++;
                     }
                 }
             }
         }
         for (String key : wordObjects.keySet()) {
-            // TFIDF calculation here
+            // TODO TFIDF calculation here
             wordObjects.get(key).calculateProbability(totalHatecount, totalNormcount);
         }
 
     }
-
-    public boolean relevant(String classifier) {
+    
+    // for the default CSV file
+    private boolean relevant(String classifier) {
         String relevance = "idk/skip";
         return classifier.equals(relevance);
     }
 
-    public void addClass(String word, boolean hate) {
+    
+    //adds classifying to the word at hand
+    private void addClass(String word, boolean hate) {
         if (hate) {
             wordObjects.get(word).countHate();
         } else {
@@ -94,10 +106,17 @@ public class Classifier {
         }
     }
 
-    public boolean isItHate(String classifier) {
+    private boolean isItHate(String classifier) {
         return classifier.equals("hate");
     }
 
+    // takes list of words and tests it through the CalculateBayes classs
+
+    /**
+     *
+     * @param test tests Strings using the classifier
+     * @return
+     */
     public ArrayList<Word> testClassifier(String test) {
         String[] tokenizedText = tokenizer.tokenize(test);
         ArrayList<Word> calculable = new ArrayList<>();

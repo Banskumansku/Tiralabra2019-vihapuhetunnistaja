@@ -17,6 +17,11 @@ public class CalculateBayes {
     public CalculateBayes() {
     }
 
+    /**
+     *
+     * @param line of words
+     * @return boolean of hatespeech
+     */
     public static boolean calculateBayes(ArrayList<Word> line) {
         float probabilityOfPositiveProduct = 1.0f;
         float probabilityOfNegativeProduct = 1.0f;
@@ -29,6 +34,11 @@ public class CalculateBayes {
         return probOfHate > 0.85f;
     }
 
+    /**
+     *
+     * @param line
+     * @return probablity of hate speech
+     */
     public static float percentageBayes(ArrayList<Word> line) {
         float probabilityOfPositiveProduct = 1.0f;
         float probabilityOfNegativeProduct = 1.0f;
