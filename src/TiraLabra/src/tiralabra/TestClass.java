@@ -49,5 +49,8 @@ public class TestClass {
                 + "On average the results were considered " + aver + " hateful";
         return results;
     }
+    public String isIthate(String line){
+        return  "Your string is hatespeech with the probablity of " + CalculateBayes.percentageBayes(c.testClassifier(line));
+    }
 
 }
