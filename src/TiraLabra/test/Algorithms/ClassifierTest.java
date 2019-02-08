@@ -47,60 +47,13 @@ public class ClassifierTest {
     public void testTrainClassifier() {
         System.out.println("trainClassifier");
         Classifier instance = new Classifier();
-        instance.trainClassifier();
+        instance.trainClassifier("default");
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of relevant method, of class Classifier.
      */
-    @Test
-    public void testRelevant() {
-        System.out.println("relevant");
-        String classifier = "ik/skip";
-        Classifier instance = new Classifier();
-        
-        boolean expResult = false;
-        boolean result = instance.relevant(classifier);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        
-    }
-
-    /**
-     * Test of addClass method, of class Classifier.
-     */
-    @Test
-    public void testAddClass() {
-        System.out.println("addClass");
-        
-        String word = "test";
-        boolean hate = false;
-        HashMap<String, Word> wordObjects = new HashMap<>();
-        Word wordTest = new Word("test");
-        wordObjects.put(word, wordTest);
-        Classifier instance = new Classifier();
-        instance.addClass(word, hate);
-        int expected = 1;
-        int actual = wordObjects.get(word).getNormCount();
-        assertEquals(actual, expected);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
-     * Test of isItHate method, of class Classifier.
-     */
-    @Test
-    public void testIsItHate() {
-        System.out.println("isItHate");
-        String classifier = "hate";
-        Classifier instance = new Classifier();
-        boolean expResult = true;
-        boolean result = instance.isItHate(classifier);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
 
     /**
      * Test of testClassifier method, of class Classifier.

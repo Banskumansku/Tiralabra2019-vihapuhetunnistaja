@@ -1,13 +1,13 @@
 /*
- * A messy work in progress
+ * Main file
  */
-package tiralabra;
+package Main;
 
 /**
  *
  * @author jan
  */
-public class TiraLabra {
+public class Main {
 
     /**
      * @param args the command line arguments

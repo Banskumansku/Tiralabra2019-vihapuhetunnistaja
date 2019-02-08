@@ -45,10 +45,10 @@ public class Classifier {
      * @param file if default uses default dataset from stormfront
      * Can also take any properly formatted csv file
      */
-    public void trainClassifier(String file) {
+    public boolean trainClassifier(String file) {
         //String file = System.getProperty("user.dir") + "/lib/alltextsandannotations.csv";
         Iterable<CSVRecord> csvParser;
-        if (file.equals("default")) {
+        if (file.equals("default") || file.equals("defaultTest")) {
             csvParser = TableParser.parserDefault();
         } else {
             csvParser = TableParser.parser();
@@ -87,7 +87,7 @@ public class Classifier {
             // TODO TFIDF calculation here
             wordObjects.get(key).calculateProbability(totalHatecount, totalNormcount);
         }
-
+        return true;
     }
     
     // for the default CSV file

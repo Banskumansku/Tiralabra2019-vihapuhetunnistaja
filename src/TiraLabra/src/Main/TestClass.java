@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Test class to run commands of UI
  */
-package tiralabra;
+package Main;
 
 import Algorithms.CalculateBayes;
 import Algorithms.Classifier;
@@ -20,11 +18,17 @@ public class TestClass {
     private final Classifier c = new Classifier();
 
     public TestClass(String file) {
-        FileRead fileRead = new FileRead();
-        fileRead.openFile();
-        this.lines = fileRead.readFile();
-        Classifier classifier = new Classifier();
-        classifier.trainClassifier(file);
+        if (!file.equals("defaultTest")) {
+            FileRead fileRead = new FileRead();
+            fileRead.openFile();
+            this.lines = fileRead.readFile();
+            Classifier classifier = new Classifier();
+            classifier.trainClassifier(file);
+        } else {
+            Classifier classifier = new Classifier();
+            classifier.trainClassifier(file);
+            this.lines = null;
+        }
     }
 
     /**
@@ -46,11 +50,13 @@ public class TestClass {
         int total = hate + notHate;
         aver = aver / (hate + notHate);
         String results = "Out of the " + total + " results" + hate + " were considered hateful and " + notHate + " were considered normal speech.\n"
-                + "On average the results were considered " + aver + " hateful";
+                + " On average the results were considered " + aver + " hateful";
         return results;
     }
-    public String isIthate(String line){
-        return  "Your string is hatespeech with the probablity of " + CalculateBayes.percentageBayes(c.testClassifier(line));
+
+    //return chance of being hatespeech
+    public String isIthate(String line) {
+        return "Your string is hatespeech with the probablity of " + CalculateBayes.percentageBayes(c.testClassifier(line));
     }
 
 }

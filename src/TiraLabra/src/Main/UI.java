@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tiralabra;
+package Main;
 
-import Algorithms.CalculateBayes;
 import java.util.Scanner;
 
 /**
@@ -24,10 +23,10 @@ public class UI {
     public void welcome() {
         while (true) {
             System.out.println("Hello jne jne");
-            System.out.println("Enter 1 to do a thing");
-            System.out.println("Enter 2 to do a thing");
-            System.out.println("Enter 3 to do a thing");
-            System.out.println("Enter 4 to do a thing");
+            System.out.println("Enter 1 to get information on the logic behind the application");
+            System.out.println("Enter 2 to add your own classifier csv file");
+            System.out.println("Enter 3 to add your own .txt file for analysis");
+            System.out.println("Enter 4 to test with default package with individual strings");
             System.out.println("Enter to quit to quit");
             String checker = scanner.nextLine();
             switch (checker) {
@@ -35,7 +34,7 @@ public class UI {
                     // User is given a description on how the thing works
                     // its ups and downs
                     System.out.println("You chose 1");
-
+                    System.out.println("Lots of information on the inner workings of naive bayes");
                     break;
                 case "2":
                     // case 2 is when user wants to add their own file
@@ -52,11 +51,12 @@ public class UI {
                 case "4":
                     // case 4 is when user wants to test individual words with default
                     System.out.println("You chose 4");
+                    System.out.println("Give a sentence or string to analyze");
+                    System.out.println("Enter nothing to exit");
+                    test = new TestClass("defaultTest");
                     while (true) {
-                        System.out.println("Give a sentence or string to analyze");
-                        System.out.println("Enter nothing to exit");
                         String line = scanner.nextLine();
-                        if (line.equals("")) {
+                        if (line.equals("quit")) {
                             break;
                         }
                         System.out.println(test.isIthate(line));
@@ -74,6 +74,8 @@ public class UI {
         }
     }
 
+    //method for user to add their own data
+    //in the same vein as the method above
     private void ownData() {
         test = new TestClass("");
         boolean continuum = true;
