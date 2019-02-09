@@ -6,6 +6,7 @@ package Main;
 import Algorithms.CalculateBayes;
 import Algorithms.Classifier;
 import FileRead.FileRead;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -26,7 +27,8 @@ public class TestClass {
             case "defaultDatasetTest":
                 c = new Classifier(stopwords);
                 c.trainClassifier("default");
-                this.lines = null;
+                this.lines = new ArrayList<>();
+                lines.add("asd");
                 break;
             case "defaultDataset":
                 c = new Classifier(stopwords);
