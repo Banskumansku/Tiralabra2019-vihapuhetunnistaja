@@ -16,20 +16,30 @@ import java.util.List;
 public class TestClass {
 
     private final List<String> lines;
-    private Classifier c;
+    Classifier c;
 
     public TestClass(String file) {
         FileRead fileRead = new FileRead();
         HashSet<String> stopwords = new HashSet<>();
-        if (!file.equals("defaultTest")) {
-            fileRead.openFile();
-            this.lines = fileRead.readFile();
-            Classifier classifier = new Classifier(stopwords);
-            classifier.trainClassifier(file);
-        } else {
-            c = new Classifier(stopwords);
-            c.trainClassifier("default");
-            this.lines = null;
+
+        switch (file) {
+            case "defaultTest":
+                c = new Classifier(stopwords);
+                c.trainClassifier("default");
+                this.lines = null;
+                break;
+            case "default":
+                c = new Classifier(stopwords);
+                c.trainClassifier("default");
+                fileRead.openFile();
+                this.lines = fileRead.readFile();
+                break;
+            default:
+                Classifier classifier = new Classifier(stopwords);
+                classifier.trainClassifier(file);
+                fileRead.openFile();
+                this.lines = fileRead.readFile();
+                break;
         }
     }
 

@@ -82,12 +82,12 @@ public class UI {
     //method for user to add their own data
     //in the same vein as the method above
     private void ownData() {
+        System.out.println("enter 1 for testing with your own .txt file");
+        System.out.println("enter 2 for testing with a string");
+        System.out.println("enter nothing to exit own dataset analysis");
         test = new TestClass("");
         boolean continuum = true;
         while (continuum) {
-            System.out.println("enter 1 for testing with your own .txt file");
-            System.out.println("enter 2 for testing with a string");
-            System.out.println("enter \"continue\" to exit own dataset analysis");
             if (null != scanner.next()) {
                 switch (scanner.next()) {
                     case "1":
@@ -104,8 +104,13 @@ public class UI {
                             System.out.println(test.isIthate(line));
                         }
                         break;
-                    case "continue":
+                    case "":
                         continuum = false;
+                        break;
+                    default:
+                        System.out.println("enter 1 for testing with your own .txt file");
+                        System.out.println("enter 2 for testing with a string");
+                        System.out.println("enter nothing to exit own dataset analysis");
                         break;
                 }
             }
