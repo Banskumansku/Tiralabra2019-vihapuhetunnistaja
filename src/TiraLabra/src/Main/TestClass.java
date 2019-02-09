@@ -15,7 +15,7 @@ import java.util.List;
 public class TestClass {
 
     private final List<String> lines;
-    private final Classifier c = new Classifier();
+    private Classifier c = new Classifier();
 
     public TestClass(String file) {
         if (!file.equals("defaultTest")) {
@@ -25,8 +25,7 @@ public class TestClass {
             Classifier classifier = new Classifier();
             classifier.trainClassifier(file);
         } else {
-            Classifier classifier = new Classifier();
-            classifier.trainClassifier(file);
+            c.trainClassifier("default");
             this.lines = null;
         }
     }

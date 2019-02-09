@@ -20,7 +20,7 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class Classifier {
 
-    private final HashMap<String, Word> wordObjects;
+    private HashMap<String, Word> wordObjects;
     Tokenizer tokenizer = new Tokenizer();
     CalculateBayes bayes = new CalculateBayes();
     private final FileRead fileRead;
@@ -44,6 +44,7 @@ public class Classifier {
      *
      * @param file if default uses default dataset from stormfront
      * Can also take any properly formatted csv file
+     * @return this is for checking tests
      */
     public boolean trainClassifier(String file) {
         //String file = System.getProperty("user.dir") + "/lib/alltextsandannotations.csv";
