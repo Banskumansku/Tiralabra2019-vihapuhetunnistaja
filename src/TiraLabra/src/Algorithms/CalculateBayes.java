@@ -31,7 +31,7 @@ public class CalculateBayes {
             probabilityOfNegativeProduct *= (1.0f - word.getProbOfHate());
         }
         float probOfHate = probabilityOfPositiveProduct / (probabilityOfPositiveProduct + probabilityOfNegativeProduct);
-        return probOfHate > 0.85f;
+        return probOfHate > 0.75f;
     }
 
     /**

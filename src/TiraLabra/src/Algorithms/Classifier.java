@@ -20,19 +20,19 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class Classifier {
 
-    private HashMap<String, Word> wordObjects;
-    Tokenizer tokenizer = new Tokenizer();
-    CalculateBayes bayes = new CalculateBayes();
-    private final FileRead fileRead;
+    private final HashMap<String, Word> wordObjects;
+    Tokenizer tokenizer;
+    CalculateBayes bayes;
     private final TableParser tableParser;
     private final HashSet<String> stopwords;
     private int totalHatecount;
     private int totalNormcount;
 
-    public Classifier() {
-        this.fileRead = new FileRead();
+    public Classifier(HashSet<String> stopwords) {
+        this.bayes = new CalculateBayes();
+        this.tokenizer = new Tokenizer();
         this.tableParser = new TableParser();
-        this.stopwords = fileRead.importStopword();
+        this.stopwords = stopwords;
         this.wordObjects = new HashMap<>();
         this.totalHatecount = 0;
         this.totalNormcount = 0;

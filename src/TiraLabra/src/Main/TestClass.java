@@ -6,6 +6,7 @@ package Main;
 import Algorithms.CalculateBayes;
 import Algorithms.Classifier;
 import FileRead.FileRead;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -15,16 +16,18 @@ import java.util.List;
 public class TestClass {
 
     private final List<String> lines;
-    private Classifier c = new Classifier();
+    private Classifier c;
 
     public TestClass(String file) {
+        FileRead fileRead = new FileRead();
+        HashSet<String> stopwords = new HashSet<>();
         if (!file.equals("defaultTest")) {
-            FileRead fileRead = new FileRead();
             fileRead.openFile();
             this.lines = fileRead.readFile();
-            Classifier classifier = new Classifier();
+            Classifier classifier = new Classifier(stopwords);
             classifier.trainClassifier(file);
         } else {
+            c = new Classifier(stopwords);
             c.trainClassifier("default");
             this.lines = null;
         }
@@ -48,7 +51,7 @@ public class TestClass {
         }
         int total = hate + notHate;
         aver = aver / (hate + notHate);
-        String results = "Out of the " + total + " results" + hate + " were considered hateful and " + notHate + " were considered normal speech.\n"
+        String results = "Out of the " + total + " results " + hate + " were considered hateful and " + notHate + " were considered normal speech.\n"
                 + " On average the results were considered " + aver + " hateful";
         return results;
     }

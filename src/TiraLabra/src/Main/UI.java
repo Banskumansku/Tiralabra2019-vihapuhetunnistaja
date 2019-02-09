@@ -21,13 +21,13 @@ public class UI {
     }
 
     public void welcome() {
+        System.out.println("Hello jne jne");
+        System.out.println("Enter 1 to get information on the logic behind the application");
+        System.out.println("Enter 2 to add your own classifier csv file");
+        System.out.println("Enter 3 to add your own .txt file for analysis");
+        System.out.println("Enter 4 to test with default package with individual strings");
+        System.out.println("Enter quit to quit");
         while (true) {
-            System.out.println("Hello jne jne");
-            System.out.println("Enter 1 to get information on the logic behind the application");
-            System.out.println("Enter 2 to add your own classifier csv file");
-            System.out.println("Enter 3 to add your own .txt file for analysis");
-            System.out.println("Enter 4 to test with default package with individual strings");
-            System.out.println("Enter to quit to quit");
             String checker = scanner.nextLine();
             switch (checker) {
                 case "1":
@@ -56,7 +56,7 @@ public class UI {
                     test = new TestClass("defaultTest");
                     while (true) {
                         String line = scanner.nextLine();
-                        if (line.equals("quit")) {
+                        if (line.equals("")) {
                             break;
                         }
                         System.out.println(test.isIthate(line));
@@ -67,7 +67,12 @@ public class UI {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Dumb dumb");
+                    System.out.println("Hello jne jne");
+                    System.out.println("Enter 1 to get information on the logic behind the application");
+                    System.out.println("Enter 2 to add your own classifier csv file");
+                    System.out.println("Enter 3 to add your own .txt file for analysis");
+                    System.out.println("Enter 4 to test with default package with individual strings");
+                    System.out.println("Enter quit to quit");
                     break;
             }
 
