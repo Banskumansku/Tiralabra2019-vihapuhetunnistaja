@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Main;
 
 import java.util.Scanner;
 
 /**
- *
+ * 
  * @author jan
  */
 public class UI {
@@ -20,6 +15,10 @@ public class UI {
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     * User lands here from main
+     * Gives instructions
+     */
     public void welcome() {
         System.out.println("Hello jne jne");
         System.out.println("Enter 1 to get information on the logic behind the application");
@@ -45,7 +44,7 @@ public class UI {
                 case "3":
                     // case 3 is when user wants to use default package
                     System.out.println("You chose 3");
-                    test = new TestClass("default");
+                    test = new TestClass("defaultDataset");
                     System.out.println(test.howMany());
                     break;
                 case "4":
@@ -53,7 +52,7 @@ public class UI {
                     System.out.println("You chose 4");
                     System.out.println("Give a sentence or string to analyze");
                     System.out.println("Enter nothing to exit");
-                    test = new TestClass("defaultTest");
+                    test = new TestClass("defaultDatasetTest");
                     while (true) {
                         String line = scanner.nextLine();
                         if (line.equals("")) {

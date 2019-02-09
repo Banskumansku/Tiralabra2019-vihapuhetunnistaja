@@ -23,12 +23,12 @@ public class TestClass {
         HashSet<String> stopwords = new HashSet<>();
 
         switch (file) {
-            case "defaultTest":
+            case "defaultDatasetTest":
                 c = new Classifier(stopwords);
                 c.trainClassifier("default");
                 this.lines = null;
                 break;
-            case "default":
+            case "defaultDataset":
                 c = new Classifier(stopwords);
                 c.trainClassifier("default");
                 fileRead.openFile();

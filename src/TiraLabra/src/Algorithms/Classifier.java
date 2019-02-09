@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Algorithms;
 
 import Datastructures.Word;
-import FileRead.FileRead;
 import FileRead.TableParser;
 import Preprocess.Tokenizer;
 import java.util.ArrayList;
@@ -15,7 +9,7 @@ import java.util.HashSet;
 import org.apache.commons.csv.CSVRecord;
 
 /**
- *
+ * 
  * @author jan
  */
 public class Classifier {

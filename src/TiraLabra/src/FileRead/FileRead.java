@@ -1,10 +1,7 @@
 /*
  * For some reason buffered reader decided not to work -> Scanner it is
  * Takes in a list of words in a txt file format and returns it as a list
- * to be used by the lemmatizer and tokenizer
- *
- *
- *
+ * to be used by the stopworder and when user wants to add own txt files
  */
 package FileRead;
 
