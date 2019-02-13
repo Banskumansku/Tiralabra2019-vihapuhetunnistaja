@@ -60,5 +60,4 @@ public class TableParser {
         }
         return null;
     }
-
 }
