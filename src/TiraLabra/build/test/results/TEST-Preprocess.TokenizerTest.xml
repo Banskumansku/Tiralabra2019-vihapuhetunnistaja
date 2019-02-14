@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="compuutteri" name="Preprocess.TokenizerTest" skipped="0" tests="1" time="0.053" timestamp="2019-02-14T11:02:03">
+<testsuite errors="0" failures="0" hostname="compuutteri" name="Preprocess.TokenizerTest" skipped="0" tests="1" time="0.058" timestamp="2019-02-14T12:55:46">
   <properties>
     <property name="default.javac.source" value="1.8" />
     <property name="file.encoding.pkg" value="sun.io" />
@@ -80,7 +80,7 @@
     <property name="ant.project.default-target" value="default" />
     <property name="javac.profile.cmd.line.arg" value="" />
     <property name="libs.JAXB-ENDORSED.src" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Preprocess.TokenizerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/test/results/TEST-Preprocess.TokenizerTest.xml crashfile=/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/junitvmwatcher5777046337983991114.properties propsfile=/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/junit3880606063233986303.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Preprocess.TokenizerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/test/results/TEST-Preprocess.TokenizerTest.xml crashfile=/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/junitvmwatcher7902411660481799463.properties propsfile=/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/junit7176794931978222935.properties" />
     <property name="built-jar.properties" value="/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/built-jar.properties" />
     <property name="ant.junit.enabletestlistenerevents" value="true" />
     <property name="ant.file" value="/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build.xml" />

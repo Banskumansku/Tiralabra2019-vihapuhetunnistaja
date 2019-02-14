@@ -13,8 +13,8 @@ package Datastructures;
  */
 public class Map<K, V> {
 
-    private final Object[] key = new Object[100000];
-    private final Object[] value = new Object[100000];
+    private final Object[] key = new Object[50000];
+    private final Object[] value = new Object[50000];
 
     public int hashC(Object o) {
         int hash = 0;

@@ -12,21 +12,37 @@ package Datastructures;
  */
 public class Set<K> {
 
-    private final Object[] key = new Object[100000];
-    private final boolean[] value = new boolean[100000];
+    private final Object[] key;
+    private final Object[] value;
+
+    public Set() {
+        this.value = new Object[50000];
+        this.key = new Object[50000];
+    }
 
     public int hashC(Object o) {
-        return o.hashCode() % key.length;
+        return Math.abs(o.hashCode()) % key.length;
     }
 
-    public Object contains(Object haku) {
+    /**
+     *
+     * @param haku
+     * @return returns boolean if set contains object
+     */
+    public boolean contains(Object haku) {
         if (key[hashC(haku)] != null) {
-            return value[hashC(haku)];
-        } else {
-            return false;
+            if (value[hashC(haku)] == haku) {
+                return true;
+            }
         }
+        return false;
     }
 
+    /**
+     *
+     * @param a any object
+     * @return returns true if object is succesfully added
+     */
     public boolean add(Object a) {
         int hash = hashC(a);
         if (key[hash] != null) {
@@ -42,6 +58,11 @@ public class Set<K> {
         return true;
     }
 
+    /**
+     * Used when collisions happen in adding objects to hashset
+     * @param hash value of hashcode
+     * @param a any object
+     */
     public void openHash(int hash, Object a) {
         for (int i = hash; i < key.length - 1; i++) {
             if (key[i] == null) {

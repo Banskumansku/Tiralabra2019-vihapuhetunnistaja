@@ -1,9 +1,9 @@
 package Algorithms;
 
+import Datastructures.Set;
 import Datastructures.Word;
 import FileRead.TableParser;
 import Preprocess.Tokenizer;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,11 +19,11 @@ public class Classifier {
     Tokenizer tokenizer;
     CalculateBayes bayes;
     private final TableParser tableParser;
-    private final HashSet<String> stopwords;
+    private final Set<String> stopwords;
     private int totalHatecount;
     private int totalNormcount;
 
-    public Classifier(HashSet<String> stopwords) {
+    public Classifier(Set<String> stopwords) {
         this.bayes = new CalculateBayes();
         this.tokenizer = new Tokenizer();
         this.tableParser = new TableParser();

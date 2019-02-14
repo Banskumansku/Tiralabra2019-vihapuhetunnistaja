@@ -5,6 +5,7 @@ package Main;
 
 import Algorithms.CalculateBayes;
 import Algorithms.Classifier;
+import Datastructures.Set;
 import FileRead.FileRead;
 import java.util.HashSet;
 
@@ -19,8 +20,8 @@ public class TestClass {
 
     public TestClass(String file) {
         FileRead fileRead = new FileRead();
-        HashSet<String> stopwords = new HashSet<>();
-
+        Set<String> stopwords = new Set<>();
+                
         switch (file) {
             case "defaultDatasetTest":
                 c = new Classifier(stopwords);

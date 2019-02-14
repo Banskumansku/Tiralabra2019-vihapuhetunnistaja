@@ -5,6 +5,7 @@
  */
 package Algorithms;
 
+import Datastructures.Set;
 import Datastructures.Word;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -46,7 +47,7 @@ public class ClassifierTest {
     @Test
     public void testTrainClassifier() {
         System.out.println("trainClassifier");
-        HashSet<String> stop = new HashSet<>();
+        Set<String> stop = new Set<>();
         stop.add("what");
         Classifier instance = new Classifier(stop);
         instance.trainClassifier("default");
@@ -63,7 +64,7 @@ public class ClassifierTest {
     public void testTestClassifier() {
         System.out.println("testClassifier");
         String test = "test";
-        HashSet<String> stop = new HashSet<>();
+        Set<String> stop = new Set<>();
         stop.add("what");
         Classifier instance = new Classifier(stop);
         Word word = new Word("test");

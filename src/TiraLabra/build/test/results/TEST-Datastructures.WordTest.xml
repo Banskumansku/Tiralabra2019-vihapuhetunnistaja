@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="compuutteri" name="Datastructures.WordTest" skipped="0" tests="9" time="0.054" timestamp="2019-02-14T11:02:01">
+<testsuite errors="0" failures="0" hostname="compuutteri" name="Datastructures.WordTest" skipped="0" tests="9" time="0.053" timestamp="2019-02-14T12:55:45">
   <properties>
     <property name="default.javac.source" value="1.8" />
     <property name="file.encoding.pkg" value="sun.io" />
@@ -80,7 +80,7 @@
     <property name="ant.project.default-target" value="default" />
     <property name="javac.profile.cmd.line.arg" value="" />
     <property name="libs.JAXB-ENDORSED.src" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Datastructures.WordTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/test/results/TEST-Datastructures.WordTest.xml crashfile=/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/junitvmwatcher6009150864216613171.properties propsfile=/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/junit3484432241292688924.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Datastructures.WordTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/test/results/TEST-Datastructures.WordTest.xml crashfile=/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/junitvmwatcher720826049739129552.properties propsfile=/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/junit7998456958056771096.properties" />
     <property name="built-jar.properties" value="/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build/built-jar.properties" />
     <property name="ant.junit.enabletestlistenerevents" value="true" />
     <property name="ant.file" value="/home/jan/Tiralabra2019-vihapuhetunnistaja/src/TiraLabra/build.xml" />
@@ -278,7 +278,7 @@
   <testcase classname="Datastructures.WordTest" name="testSetNormRate" time="0.002" />
   <testcase classname="Datastructures.WordTest" name="testGetNormRate" time="0.0" />
   <testcase classname="Datastructures.WordTest" name="testGetWord" time="0.0" />
-  <testcase classname="Datastructures.WordTest" name="testCalculateProbability" time="0.001" />
+  <testcase classname="Datastructures.WordTest" name="testCalculateProbability" time="0.0" />
   <testcase classname="Datastructures.WordTest" name="testGetProbOfHate" time="0.0" />
   <testcase classname="Datastructures.WordTest" name="testSetProbOfHate" time="0.0" />
   <testcase classname="Datastructures.WordTest" name="testGetHateRate" time="0.0" />
