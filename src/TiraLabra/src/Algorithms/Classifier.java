@@ -4,12 +4,13 @@ import Datastructures.Word;
 import FileRead.TableParser;
 import Preprocess.Tokenizer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import org.apache.commons.csv.CSVRecord;
 
 /**
- * 
+ *
  * @author jan
  */
 public class Classifier {
@@ -33,11 +34,10 @@ public class Classifier {
     }
 
 // 
-
     /**
      *
-     * @param file if default uses default dataset from stormfront
-     * Can also take any properly formatted csv file
+     * @param file if default uses default dataset from stormfront Can also take
+     * any properly formatted csv file
      * @return this is for checking tests
      */
     public boolean trainClassifier(String file) {
@@ -48,7 +48,6 @@ public class Classifier {
         } else {
             csvParser = TableParser.parser();
         }
-        
 
         for (CSVRecord csvRecord : csvParser) {
             // Accessing Values by Column Index
@@ -84,14 +83,13 @@ public class Classifier {
         }
         return true;
     }
-    
+
     // for the default CSV file
     private boolean relevant(String classifier) {
         String relevance = "idk/skip";
         return classifier.equals(relevance);
     }
 
-    
     //adds classifying to the word at hand
     private void addClass(String word, boolean hate) {
         if (hate) {
@@ -106,15 +104,25 @@ public class Classifier {
     }
 
     // takes list of words and tests it through the CalculateBayes classs
-
     /**
      *
      * @param test tests Strings using the classifier
      * @return
      */
-    public ArrayList<Word> testClassifier(String test) {
+    public Word[] testClassifier(String test) {
+        /*     Account obj[] = new Account[2] ;
+     //obj[0] = new Account();
+     //obj[1] = new Account();
+    obj[0].setData(1,2);
+    obj[1].setData(3,4);
+    System.out.println("For Array Element 0");
+    obj[0].showData();
+    System.out.println("For Array Element 1");
+     obj[1].showData();
+         */
+        int amount = 0;
         String[] tokenizedText = tokenizer.tokenize(test);
-        ArrayList<Word> calculable = new ArrayList<>();
+        Word wordObj[] = new Word[tokenizedText.length];
         for (int i = 0; i < tokenizedText.length; i++) {
             String wordString = tokenizedText[i];
             if (!wordObjects.containsKey(wordString)) {
@@ -122,13 +130,18 @@ public class Classifier {
                     Word w = new Word(wordString);
                     w.setProbOfHate(0.5f);
                     wordObjects.put(wordString, w);
-                    calculable.add(this.wordObjects.get(wordString));
+                    wordObj[amount] = w;
+                    amount++;
                 }
             } else if (wordObjects.containsKey(wordString)) {
-                calculable.add(this.wordObjects.get(wordString));
+                wordObj[amount] = this.wordObjects.get(wordString);
+                amount++;
             }
         }
-        return calculable;
+        if (amount == 0) {
+            return null;
+        }
+        return Arrays.copyOfRange(wordObj, 0, amount);
     }
 
 }

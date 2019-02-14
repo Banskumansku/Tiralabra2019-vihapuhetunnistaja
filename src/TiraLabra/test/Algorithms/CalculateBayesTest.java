@@ -45,10 +45,10 @@ public class CalculateBayesTest {
     @Test
     public void testCalculateBayes() {
         System.out.println("calculateBayes");
-        ArrayList<Word> line = new ArrayList<>();
+        Word line[] = new Word[1];
         Word word = new Word("test");
         word.setProbOfHate((float) 0.5);
-        line.add(word);
+        line[0] = word;
         
         boolean expResult = false;
         boolean result = CalculateBayes.calculateBayes(line);
@@ -62,10 +62,10 @@ public class CalculateBayesTest {
     @Test
     public void testPercentageBayes() {
         System.out.println("percentageBayes");
-        ArrayList<Word> line = new ArrayList<>();
+        Word line[] = new Word[1];
         Word word = new Word("test");
         word.setProbOfHate((float) 0.5);
-        line.add(word);
+        line[0] = word;
         float expResult = 0.5f;
         float result = CalculateBayes.percentageBayes(line);
         assertEquals(expResult, result, 0.0);

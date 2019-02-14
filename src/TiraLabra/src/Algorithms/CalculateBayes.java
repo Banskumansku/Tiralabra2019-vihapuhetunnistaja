@@ -17,11 +17,11 @@ public class CalculateBayes {
      * @param line of words
      * @return boolean of hatespeech
      */
-    public static boolean calculateBayes(ArrayList<Word> line) {
+    public static boolean calculateBayes(Word line[]) {
         float probabilityOfPositiveProduct = 1.0f;
         float probabilityOfNegativeProduct = 1.0f;
-        for (int i = 0; i < line.size(); i++) {
-            Word word = line.get(i);
+        for (int i = 0; i < line.length; i++) {
+            Word word = line[i];
             probabilityOfPositiveProduct *= word.getProbOfHate();
             probabilityOfNegativeProduct *= (1.0f - word.getProbOfHate());
         }
@@ -34,11 +34,11 @@ public class CalculateBayes {
      * @param line
      * @return probablity of hate speech
      */
-    public static float percentageBayes(ArrayList<Word> line) {
+    public static float percentageBayes(Word line[]) {
         float probabilityOfPositiveProduct = 1.0f;
         float probabilityOfNegativeProduct = 1.0f;
-        for (int i = 0; i < line.size(); i++) {
-            Word word = line.get(i);
+        for (int i = 0; i < line.length; i++) {
+            Word word = line[i];
             probabilityOfPositiveProduct *= word.getProbOfHate();
             probabilityOfNegativeProduct *= (1.0f - word.getProbOfHate());
         }

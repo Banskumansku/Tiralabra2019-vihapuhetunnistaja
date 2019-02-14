@@ -68,8 +68,8 @@ public class ClassifierTest {
         Classifier instance = new Classifier(stop);
         Word word = new Word("test");
         word.setProbOfHate(0.5f);
-        ArrayList<Word> result = instance.testClassifier(test);
-        assertEquals(word.getWord(), result.get(0).getWord());
+        Word[] result = instance.testClassifier(test);
+        assertEquals(word.getWord(), result[0].getWord());
         // TODO review the generated test code and remove the default call to fail.
     }
 
