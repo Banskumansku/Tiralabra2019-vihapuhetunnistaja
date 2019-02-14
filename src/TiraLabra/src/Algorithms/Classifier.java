@@ -110,16 +110,6 @@ public class Classifier {
      * @return
      */
     public Word[] testClassifier(String test) {
-        /*     Account obj[] = new Account[2] ;
-     //obj[0] = new Account();
-     //obj[1] = new Account();
-    obj[0].setData(1,2);
-    obj[1].setData(3,4);
-    System.out.println("For Array Element 0");
-    obj[0].showData();
-    System.out.println("For Array Element 1");
-     obj[1].showData();
-         */
         int amount = 0;
         String[] tokenizedText = tokenizer.tokenize(test);
         Word wordObj[] = new Word[tokenizedText.length];
