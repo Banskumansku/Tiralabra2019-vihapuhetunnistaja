@@ -8,11 +8,13 @@ package Datastructures;
 /**
  *
  * @author jan
+ * @param <K> key value
+ * @param <V> value that is returned
  */
 public class Map<K, V> {
 
-    private Object[] key = new Object[10000];
-    private Object[] value = new Object[10000];
+    private final Object[] key = new Object[10000];
+    private final Object[] value = new Object[10000];
 
     public int hashC(Object o) {
         int hash = 0;

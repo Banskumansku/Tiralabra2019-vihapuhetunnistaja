@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class TestClass {
 
-    private final List<String> lines;
+    private String[] lines;
     Classifier c;
 
     public TestClass(String file) {
@@ -27,8 +27,8 @@ public class TestClass {
             case "defaultDatasetTest":
                 c = new Classifier(stopwords);
                 c.trainClassifier("default");
-                this.lines = new ArrayList<>();
-                lines.add("asd");
+                this.lines = new String[1];
+                lines[0] = "asd";
                 break;
             case "defaultDataset":
                 c = new Classifier(stopwords);

@@ -45,11 +45,11 @@ public class TokenizerTest {
         System.out.println("tokenize");
         String line = "";
         Tokenizer instance = new Tokenizer();
-        String[] expResult = null;
+        String[] expResult = new String[1];
+        expResult[0] = "";
         String[] result = instance.tokenize(line);
         assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

@@ -5,9 +5,7 @@
  */
 package FileRead;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,22 +18,22 @@ import static org.junit.Assert.*;
  * @author jan
  */
 public class FileReadTest {
-    
+
     public FileReadTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -54,7 +52,7 @@ public class FileReadTest {
 
     /**
      * Test of openFile method, of class FileRead.
-     */
+     *
     @Test
     public void testOpenFile() {
         // use file path String fileName = System.getProperty("user.dir") + "/lib/stopwords.txt";
@@ -62,25 +60,23 @@ public class FileReadTest {
         FileRead instance = new FileRead();
         boolean open = instance.openFile();
         assertTrue(open);
-        // TODO review the generated test code and remove the default call to fail.
-    }
+    } */
 
     /**
      * Test of readFile method, of class FileRead.
      */
-    @Test
+    /*    @Test
     public void testReadFile() {
         System.out.println("readFile");
         FileRead instance = new FileRead();
         boolean open = instance.openFile();
         HashSet<String> expResult = instance.importStopword();
-        List<String> variable = instance.readFile();
+        String[] variable = instance.readFile();
         HashSet<String> result = new HashSet<>();
         for (String string : variable) {
             result.add(string);
         }
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
-    
+     */
 }

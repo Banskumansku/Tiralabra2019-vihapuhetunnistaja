@@ -3,7 +3,7 @@ package Main;
 import java.util.Scanner;
 
 /**
- * 
+ *
  * @author jan
  */
 public class UI {
@@ -16,16 +16,10 @@ public class UI {
     }
 
     /**
-     * User lands here from main
-     * Gives instructions
+     * User lands here from main Gives instructions
      */
     public void welcome() {
-        System.out.println("Hello jne jne");
-        System.out.println("Enter 1 to get information on the logic behind the application");
-        System.out.println("Enter 2 to add your own classifier csv file");
-        System.out.println("Enter 3 to add your own .txt file for analysis");
-        System.out.println("Enter 4 to test with default package with individual strings");
-        System.out.println("Enter quit to quit");
+        hello();
         while (true) {
             String checker = scanner.nextLine();
             switch (checker) {
@@ -66,12 +60,7 @@ public class UI {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Hello jne jne");
-                    System.out.println("Enter 1 to get information on the logic behind the application");
-                    System.out.println("Enter 2 to add your own classifier csv file");
-                    System.out.println("Enter 3 to add your own .txt file for analysis");
-                    System.out.println("Enter 4 to test with default package with individual strings");
-                    System.out.println("Enter quit to quit");
+                    hello();
                     break;
             }
 
@@ -81,9 +70,7 @@ public class UI {
     //method for user to add their own data
     //in the same vein as the method above
     private void ownData() {
-        System.out.println("enter 1 for testing with your own .txt file");
-        System.out.println("enter 2 for testing with a string");
-        System.out.println("enter nothing to exit own dataset analysis");
+        ownFileHello();
         test = new TestClass("");
         boolean continuum = true;
         while (continuum) {
@@ -107,13 +94,26 @@ public class UI {
                         continuum = false;
                         break;
                     default:
-                        System.out.println("enter 1 for testing with your own .txt file");
-                        System.out.println("enter 2 for testing with a string");
-                        System.out.println("enter nothing to exit own dataset analysis");
+                        ownFileHello();
                         break;
                 }
             }
 
         }
+    }
+
+    public void hello() {
+        System.out.println("Hello jne jne");
+        System.out.println("Enter 1 to get information on the logic behind the application");
+        System.out.println("Enter 2 to add your own classifier csv file");
+        System.out.println("Enter 3 to add your own .txt file for analysis");
+        System.out.println("Enter 4 to test with default package with individual strings");
+        System.out.println("Enter quit to quit");
+    }
+
+    public void ownFileHello() {
+        System.out.println("enter 1 for testing with your own .txt file");
+        System.out.println("enter 2 for testing with a string");
+        System.out.println("enter nothing to exit own dataset analysis");
     }
 }

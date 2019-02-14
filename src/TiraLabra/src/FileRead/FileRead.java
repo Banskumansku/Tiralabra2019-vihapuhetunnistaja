@@ -6,10 +6,14 @@
 package FileRead;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.HashSet;
+
 /**
  *
  * @author jan
@@ -17,9 +21,11 @@ import java.util.HashSet;
 public class FileRead {
 
     private Scanner scanner;
+    int rowCount;
 
     public FileRead() {
         this.scanner = null;
+        this.rowCount = 0;
     }
 
     /**
@@ -54,6 +60,8 @@ public class FileRead {
         String fileName = asker.nextLine();
         try {
             this.scanner = new Scanner(new File(fileName));
+            Path path = Paths.get(fileName);
+            rowCount = (int) Files.lines(path).count();
             return true;
         } catch (Exception e) {
             System.err.println("No file found");
@@ -65,10 +73,13 @@ public class FileRead {
      *
      * @return makes file into arraylist object
      */
-    public List<String> readFile() {
-        List<String> lista = new ArrayList<>();
+    public String[] readFile() {
+
+        String[] lista = new String[rowCount];
+        int index = 0;
         while (this.scanner.hasNext()) {
-            lista.add(this.scanner.next());
+            //lista.add(this.scanner.next());
+            lista[index] = this.scanner.nextLine();
         }
         scanner.close();
         return lista;
