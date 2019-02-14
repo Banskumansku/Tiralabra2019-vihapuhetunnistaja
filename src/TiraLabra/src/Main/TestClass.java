@@ -7,7 +7,6 @@ import Algorithms.CalculateBayes;
 import Algorithms.Classifier;
 import Datastructures.Set;
 import FileRead.FileRead;
-import java.util.HashSet;
 
 /**
  *

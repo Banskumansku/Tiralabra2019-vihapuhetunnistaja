@@ -14,14 +14,20 @@ public class Set<K> {
 
     private final Object[] key;
     private final Object[] value;
+    private int size;
 
     public Set() {
         this.value = new Object[50000];
         this.key = new Object[50000];
+        this.size = 0;
     }
 
     public int hashC(Object o) {
         return Math.abs(o.hashCode()) % key.length;
+    }
+
+    public int getSize() {
+        return size;
     }
 
     /**
@@ -31,7 +37,7 @@ public class Set<K> {
      */
     public boolean contains(Object haku) {
         if (key[hashC(haku)] != null) {
-            if (value[hashC(haku)] == haku) {
+            if (key[hashC(haku)] == haku) {
                 return true;
             }
         }
@@ -55,6 +61,7 @@ public class Set<K> {
             this.key[hash] = a;
             this.value[hash] = true;
         }
+        this.size++;
         return true;
     }
 

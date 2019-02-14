@@ -7,8 +7,6 @@ package Algorithms;
 
 import Datastructures.Set;
 import Datastructures.Word;
-import java.util.ArrayList;
-import java.util.HashSet;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
