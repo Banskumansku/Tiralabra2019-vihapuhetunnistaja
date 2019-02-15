@@ -45,14 +45,17 @@ public class UI {
                     // case 4 is when user wants to test individual words with default
                     System.out.println("You chose 4");
                     System.out.println("Give a sentence or string to analyze");
-                    System.out.println("Enter nothing to exit");
+                    System.out.println("Press enter twice to exit");
                     test = new TestClass("defaultDatasetTest");
                     while (true) {
                         String line = scanner.nextLine();
                         if (line.equals("")) {
                             break;
+                        } else if (line.equals(" ")) {
+                            System.out.println("Be more creative than that");
+                        } else {
+                            System.out.println(test.isIthate(line));
                         }
-                        System.out.println(test.isIthate(line));
                     }
                     break;
                 case "quit":
