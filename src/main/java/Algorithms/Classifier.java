@@ -67,10 +67,14 @@ public class Classifier {
                         Word word = new Word(string);
                         wordObjects.put(string, word);
                         addClass(string, hate);
+                        addClass(string, hate);
                         addClass(string, !hate);
+                        if (hate) {
                             totalHatecount++;
+                        } else {
                             totalNormcount++;
-                        
+                        }
+
                     } else {
                     }
                 }
