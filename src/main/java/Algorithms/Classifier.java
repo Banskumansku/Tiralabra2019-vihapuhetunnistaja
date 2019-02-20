@@ -62,15 +62,15 @@ public class Classifier {
                         } else {
                             totalNormcount++;
                         }
+                        // Smooths the first entry, if there is only one such word
                     } else if (!stopwords.contains(string)) {
                         Word word = new Word(string);
                         wordObjects.put(string, word);
                         addClass(string, hate);
-                        if (hate) {
+                        addClass(string, !hate);
                             totalHatecount++;
-                        } else {
                             totalNormcount++;
-                        }
+                        
                     } else {
                     }
                 }
