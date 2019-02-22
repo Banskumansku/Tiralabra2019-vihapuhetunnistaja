@@ -5,7 +5,7 @@ import Datastructures.Word;
 import FileRead.TableParser;
 import Preprocess.Tokenizer;
 import java.util.Arrays;
-import java.util.HashMap;
+import Datastructures.CustMap;
 import org.apache.commons.csv.CSVRecord;
 
 /**
@@ -14,7 +14,7 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class Classifier {
 
-    private final HashMap<String, Word> wordObjects;
+    private final CustMap<String, Word> wordObjects;
     Tokenizer tokenizer;
     CalculateBayes bayes;
     private final TableParser tableParser;
@@ -27,7 +27,7 @@ public class Classifier {
         this.tokenizer = new Tokenizer();
         this.tableParser = new TableParser();
         this.stopwords = stopwords;
-        this.wordObjects = new HashMap<>();
+        this.wordObjects = new CustMap<>();
         this.totalHatecount = 0;
         this.totalNormcount = 0;
     }
@@ -55,35 +55,43 @@ public class Classifier {
             if (!relevant(csvRecord.get(53))) {
                 String[] tokenizedLine = tokenizer.tokenize(csvRecord.get(1));
                 for (String string : tokenizedLine) {
-                    if (wordObjects.containsKey(string)) {
-                        addClass(string, hate);
-                        if (hate) {
-                            totalHatecount++;
-                        } else {
-                            totalNormcount++;
-                        }
-                        // Smooths the first entry, if there is only one such word
-                    } else if (!stopwords.contains(string)) {
-                        Word word = new Word(string);
-                        wordObjects.put(string, word);
-                        addClass(string, hate);
-                        addClass(string, hate);
-                        addClass(string, !hate);
-                        if (hate) {
-                            totalHatecount++;
-                        } else {
-                            totalNormcount++;
-                        }
+                    if (!stopwords.contains(string)) {
+                        if (wordObjects.contains(string)) {
+                            addClass(string, hate);
+                            if (hate) {
+                                totalHatecount++;
+                            } else {
+                                totalNormcount++;
+                            }
+                            // Smooths the first entry, if there is only one such word
+                        } else if (!stopwords.contains(string)) {
+                            Word word = new Word(string);
+                            wordObjects.put(string, word);
+                            addClass(string, hate);
+                            addClass(string, hate);
+                            addClass(string, !hate);
+                            if (hate) {
+                                totalHatecount++;
+                            } else {
+                                totalNormcount++;
+                            }
 
-                    } else {
+                        }
                     }
                 }
             }
         }
-        for (String key : wordObjects.keySet()) {
+        System.out.println(wordObjects.size());
+        int i = 0;
+        for (Object key : wordObjects.keySet()) {
             // TODO TFIDF calculation here
-            wordObjects.get(key).calculateProbability(totalHatecount, totalNormcount);
+            
+            if (key != null) {
+                wordObjects.get((String) key).calculateProbability(totalHatecount, totalNormcount);
+                i++;
+            }
         }
+        System.out.println(i);
         return true;
     }
 
@@ -116,9 +124,8 @@ public class Classifier {
         int amount = 0;
         String[] tokenizedText = tokenizer.tokenize(test);
         Word wordObj[] = new Word[tokenizedText.length];
-        for (int i = 0; i < tokenizedText.length; i++) {
-            String wordString = tokenizedText[i];
-            if (!wordObjects.containsKey(wordString)) {
+        for (String wordString : tokenizedText) {
+            if (!wordObjects.contains(wordString)) {
                 if (!stopwords.contains(wordString)) {
                     Word w = new Word(wordString);
                     w.setProbOfHate(0.5f);
@@ -126,7 +133,7 @@ public class Classifier {
                     wordObj[amount] = w;
                     amount++;
                 }
-            } else if (wordObjects.containsKey(wordString)) {
+            } else if (wordObjects.contains(wordString)) {
                 wordObj[amount] = this.wordObjects.get(wordString);
                 amount++;
             }

@@ -63,10 +63,10 @@ public class CalculateBayesTest {
         System.out.println("percentageBayes");
         Word line[] = new Word[1];
         Word word = new Word("test");
-        word.setProbOfHate((float) 0.5);
+        word.setProbOfHate((double) 0.5);
         line[0] = word;
-        float expResult = 0.5f;
-        float result = CalculateBayes.percentageBayes(line);
+        double expResult = 0.5f;
+        double result = CalculateBayes.percentageBayes(line);
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
     }

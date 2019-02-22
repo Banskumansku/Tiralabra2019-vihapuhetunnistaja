@@ -17,15 +17,14 @@ public class CalculateBayes {
      * @return boolean of hatespeech
      */
     public static boolean calculateBayes(Word line[]) {
-        float probabilityOfPositiveProduct = 1.0f;
-        float probabilityOfNegativeProduct = 1.0f;
-        for (int i = 0; i < line.length; i++) {
-            Word word = line[i];
+        double probabilityOfPositiveProduct = 1.0;
+        double probabilityOfNegativeProduct = 1.0;
+        for (Word word : line) {
             probabilityOfPositiveProduct *= word.getProbOfHate();
-            probabilityOfNegativeProduct *= (1.0f - word.getProbOfHate());
+            probabilityOfNegativeProduct *= (1.0 - word.getProbOfHate());
         }
-        float probOfHate = probabilityOfPositiveProduct / (probabilityOfPositiveProduct + probabilityOfNegativeProduct);
-        return probOfHate > 0.75f;
+        double probOfHate = probabilityOfPositiveProduct / (probabilityOfPositiveProduct + probabilityOfNegativeProduct);
+        return probOfHate > 0.75;
     }
 
     /**
@@ -33,15 +32,17 @@ public class CalculateBayes {
      * @param line
      * @return probablity of hate speech
      */
-    public static float percentageBayes(Word line[]) {
-        float probabilityOfPositiveProduct = 1.0f;
-        float probabilityOfNegativeProduct = 1.0f;
-        for (int i = 0; i < line.length; i++) {
-            Word word = line[i];
+    public static double percentageBayes(Word line[]) {
+        double probabilityOfPositiveProduct = 1.0f;
+        double probabilityOfNegativeProduct = 1.0f;
+        for (Word word : line) {
             probabilityOfPositiveProduct *= word.getProbOfHate();
-            probabilityOfNegativeProduct *= (1.0f - word.getProbOfHate());
+            probabilityOfNegativeProduct *= (1.0 - word.getProbOfHate());
         }
-        float probOfHate = probabilityOfPositiveProduct / (probabilityOfPositiveProduct + probabilityOfNegativeProduct);
+        double probOfHate = probabilityOfPositiveProduct / (probabilityOfPositiveProduct + probabilityOfNegativeProduct);
+        if (probOfHate < 0.01) {
+            return 0.01;
+        } 
         return probOfHate;
     }
 

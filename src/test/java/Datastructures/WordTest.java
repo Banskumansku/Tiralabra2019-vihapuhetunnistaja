@@ -78,8 +78,8 @@ public class WordTest {
         instance.countHate();
         
         instance.calculateProbability(totNorm, totHate);
-        float expected = 0.9999f;
-        float actual = instance.getProbOfHate();
+        double expected = 0.9999;
+        double actual = instance.getProbOfHate();
         // TODO review the generated test code and remove the default call to fail.
         assertEquals(expected, actual, 0);
     }
@@ -104,9 +104,9 @@ public class WordTest {
     public void testGetHateRate() {
         System.out.println("getHateRate");
         Word instance = new Word("test");
-        instance.setHateRate(0.5f);
-        float expResult = 0.5F;
-        float result = instance.getHateRate();
+        instance.setHateRate(0.5);
+        double expResult = 0.5;
+        double result = instance.getHateRate();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
     }
@@ -118,9 +118,9 @@ public class WordTest {
     public void testGetNormRate() {
         System.out.println("getNormRate");
         Word instance = new Word("test");
-        instance.setNormRate(0.5f);
-        float expResult = 0.5F;
-        float result = instance.getNormRate();
+        instance.setNormRate(0.5);
+        double expResult = 0.5;
+        double result = instance.getNormRate();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
     }
@@ -131,11 +131,11 @@ public class WordTest {
     @Test
     public void testSetNormRate() {
         System.out.println("setNormRate");
-        float normRate = 0.0F;
+        double normRate = 0.0;
         Word instance = new Word("test");
         instance.setNormRate(normRate);
         // TODO review the generated test code and remove the default call to fail.
-        assertEquals(normRate, instance.getNormRate(), 0f);
+        assertEquals(normRate, instance.getNormRate(), 0);
     }
 
     /**
@@ -145,8 +145,8 @@ public class WordTest {
     public void testGetProbOfHate() {
         System.out.println("getProbOfHate");
         Word instance = new Word("test");
-        float expResult = 0.0F;
-        float result = instance.getProbOfHate();
+        double expResult = 0.0;
+        double result = instance.getProbOfHate();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
     }
@@ -157,10 +157,10 @@ public class WordTest {
     @Test
     public void testSetProbOfHate() {
         System.out.println("setProbOfHate");
-        float probOfHate = 0.0F;
+        double probOfHate = 0.0;
         Word instance = new Word("test");
         instance.setProbOfHate(probOfHate);
-        float expected = 0f;
+        double expected = 0;
         // TODO review the generated test code and remove the default call to fail.
         assertEquals(probOfHate, expected, 0);
     }
