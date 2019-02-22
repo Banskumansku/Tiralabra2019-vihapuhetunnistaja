@@ -81,17 +81,13 @@ public class Classifier {
                 }
             }
         }
-        System.out.println(wordObjects.size());
-        int i = 0;
         for (Object key : wordObjects.keySet()) {
             // TODO TFIDF calculation here
-            
+
             if (key != null) {
                 wordObjects.get((String) key).calculateProbability(totalHatecount, totalNormcount);
-                i++;
             }
         }
-        System.out.println(i);
         return true;
     }
 

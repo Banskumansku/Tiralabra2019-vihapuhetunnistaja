@@ -27,7 +27,10 @@ public class UI {
                     // User is given a description on how the thing works
                     // its ups and downs
                     System.out.println("You chose 1");
-                    System.out.println("Lots of information on the inner workings of naive bayes");
+                    System.out.println("Basic functionality is pretty much to that of spam/ham, but with an approach to hate speech");
+                    System.out.println("The classifier natively installed isn't the best, but that's why there is the added functionality to add your own classifier");
+                    System.out.println("Naive bayes takes in the data and statistically approximates how likely is it that the text entered is hatespeech");
+                    System.out.println("");
                     break;
                 case "2":
                     // case 2 is when user wants to add their own file
