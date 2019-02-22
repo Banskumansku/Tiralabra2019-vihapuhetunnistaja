@@ -26,6 +26,11 @@ public class CustMap<K, V> {
         this.size = 0;
     }
 
+    /**
+     * Basic hashMap, you put in key, values
+     * @param newKey 
+     * @param data
+     */
     public void put(K newKey, V data) {
         if (newKey == null) {
             return;
@@ -33,10 +38,11 @@ public class CustMap<K, V> {
 
         int hash = hash(newKey);
         Entry<K, V> newEntry = new Entry<>(newKey, data, null);
-
+        // if space is free the entry goes here
         if (table[hash] == null) {
             table[hash] = newEntry;
             this.size++;
+            // if not, linked list is iterated until a space is vacant
         } else {
             Entry<K, V> previous = null;
             Entry<K, V> current = table[hash];
@@ -65,6 +71,11 @@ public class CustMap<K, V> {
         }
     }
 
+    /**
+     *
+     * @param key key to search for value
+     * @return returned value
+     */
     public V get(K key) {
         int hash = hash(key);
         if (table[hash] == null) {
@@ -81,6 +92,11 @@ public class CustMap<K, V> {
         }
     }
 
+    /**
+     * Basically get, but with boolean
+     * @param key
+     * @return
+     */
     public boolean contains(K key) {
         int hash = hash(key);
         if (table[hash] == null) {
@@ -96,7 +112,14 @@ public class CustMap<K, V> {
             return false;
         }
     }
-
+    
+    /**
+     *  Same as put but in reverse,
+     * Also refactors the linked list so that 
+     * there are no nulls
+     * @param deleteKey
+     * @return
+     */
     public boolean remove(K deleteKey) {
 
         int hash = hash(deleteKey);
@@ -127,6 +150,10 @@ public class CustMap<K, V> {
 
     }
 
+    /**
+     * Returns entire keyset
+     * @return
+     */
     public Object[] keySet() {
         Object[] keyset = new Object[size];
         int index = 0;
@@ -152,40 +179,6 @@ public class CustMap<K, V> {
 
     private int hash(Object key) {
         return Math.abs(key.hashCode()) % capacity;
-    }
-
-    void resize(int newCapacity) {
-        Entry[] newTable = new Entry[newCapacity];
-        transfer(newTable);
-        table = newTable;
-    }
-
-    /**
-     * Transfers all entries from current table to newTable.
-     */
-    void transfer(Entry[] newTable) {
-        Entry[] srcTable = table;
-        int newCapacity = newTable.length;
-        for (int j = 0; j < srcTable.length; j++) {
-            Entry<K, V> e = srcTable[j];
-            if (e != null) {
-                srcTable[j] = null;
-                while (e != null) {
-                    Entry<K, V> next = e.next;
-                    int i = indexFor(hash(e), newCapacity);
-                    e.next = newTable[i];
-                    newTable[i] = e;
-                    e = next;
-                }
-            }
-        }
-    }
-
-    /**
-     * Returns index for hash code h.
-     */
-    static int indexFor(int h, int length) {
-        return h & (length - 1);
     }
 
 }
