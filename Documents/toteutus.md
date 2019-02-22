@@ -1,4 +1,4 @@
-# Toteutus
+﻿# Toteutus
 
 Ohjelma toteutettiin käyttämällä Naive Bayesta, samalla tavalla kuin analysoidaan roskapostia. Isoksi kompastuskiveksi ilmeni yleinen datan puute klassifioidusta vihapuheesta.
 
@@ -8,3 +8,7 @@ Ohjelmassa on 3 eri toiminnallisuutta:
 3. Yksittäisten lauseiden/sanojen testaus projektin omalla klassifiointitiedostolla
 
 Ensimmäinen osa kattaa myös 2-3, mutta omalla tiedostolla. 
+
+Puutteet: 
+- Parempi classifier tiedosto
+- Tf-idf toteutus, stopword-tiedoston sijasta
