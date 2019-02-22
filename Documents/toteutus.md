@@ -9,6 +9,9 @@ Ohjelmassa on 3 eri toiminnallisuutta:
 
 Ensimmäinen osa kattaa myös 2-3, mutta omalla tiedostolla. 
 
+
+
+
 Puutteet: 
 - Parempi classifier tiedosto
 - Tf-idf toteutus, stopword-tiedoston sijasta
