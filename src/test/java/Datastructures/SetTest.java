@@ -38,20 +38,6 @@ public class SetTest {
     }
 
     /**
-     * Test of hashC method, of class Set.
-     */
-    @Test
-    public void testHashC() {
-        System.out.println("hashC");
-        Object o = new Word("test");
-        Set instance = new Set();
-        int expResult = o.hashCode()%50000;
-        int result = instance.hashC(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
      * Test of contains method, of class Set.
      */
     @Test
@@ -89,7 +75,7 @@ public class SetTest {
         Set instance = new Set();
         int expResult = 1;
         instance.add(new Word("test"));
-        int result = instance.getSize();
+        int result = instance.size();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }

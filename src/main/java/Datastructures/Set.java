@@ -12,74 +12,151 @@ package Datastructures;
  */
 public class Set<K> {
 
-    private final Object[] key;
-    private final Object[] value;
+    private Entry<K>[] table;   //Array of Entry.
+    private int capacity = 10000;  //Initial capacity of HashMap -> large because lots of words expected
     private int size;
 
+    static class Entry<K> {
+
+        K key;
+        K value;
+        Entry<K> next;
+
+        public Entry(K key, Entry<K> next) {
+            this.key = key;
+            this.value = key;
+            this.next = next;
+        }
+
+    }
+
+    @SuppressWarnings("unchecked")
     public Set() {
-        this.value = new Object[50000];
-        this.key = new Object[50000];
+        table = new Entry[capacity];
         this.size = 0;
     }
 
-    public int hashC(Object o) {
-        return Math.abs(o.hashCode()) % key.length;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
     /**
+     * Basic hashSet, you put in key, and you are able to check if key exists in
+     * ~O(1) time
      *
-     * @param haku
-     * @return returns boolean if set contains object
+     * @param newKey
      */
-    public boolean contains(Object haku) {
-        if (key[hashC(haku)] != null) {
-            if (key[hashC(haku)] == haku) {
-                return true;
-            }
+    public boolean add(K newKey) {
+        if (newKey == null) {
+            return false;
         }
-        return false;
-    }
 
-    /**
-     *
-     * @param a any object
-     * @return returns true if object is succesfully added
-     */
-    public boolean add(Object a) {
-        int hash = hashC(a);
-        if (key[hash] != null) {
-            if (key[hash] == a) {
-                this.value[hash] = true;
-            } else if (key[hash] != a) {
-                openHash(hash, a);
-            }
+        int hash = hash(newKey);
+        Entry<K> newEntry = new Entry<>(newKey, null);
+        // if space is free the entry goes here
+        if (table[hash] == null) {
+            table[hash] = newEntry;
+            this.size++;
+            // if not, linked list is iterated until a space is vacant
         } else {
-            this.key[hash] = a;
-            this.value[hash] = true;
+            Entry<K> previous = null;
+            Entry<K> current = table[hash];
+
+            while (current != null) {
+                if (current.key.equals(newKey)) {
+                    if (previous == null) {
+                        newEntry.next = current.next;
+                        table[hash] = newEntry;
+                        this.size++;
+
+                        return true;
+                    } else {
+                        newEntry.next = current.next;
+                        previous.next = newEntry;
+                        this.size++;
+
+                        return true;
+                    }
+                }
+                previous = current;
+                current = current.next;
+            }
+            previous.next = newEntry;
+            this.size++;
         }
-        this.size++;
         return true;
     }
 
     /**
-     * Used when collisions happen in adding objects to hashset
-     * @param hash value of hashcode
-     * @param a any object
+     *
+     * @param key key to search for value
+     * @return returned value
      */
-    public void openHash(int hash, Object a) {
-        for (int i = hash; i < key.length - 1; i++) {
-            if (key[i] == null) {
-                this.key[hash] = a;
-                this.value[hash] = true;
-                break;
+    private K get(K key) {
+        int hash = hash(key);
+        if (table[hash] == null) {
+            return null;
+        } else {
+            Entry<K> temp = table[hash];
+            while (temp != null) {
+                if (temp.key.equals(key)) {
+                    return temp.value;
+                }
+                temp = temp.next;
             }
-            if (i == key.length - 2) {
-                i = 0;
-            }
+            return null;
         }
     }
+
+    /**
+     * Basically get, but with boolean
+     *
+     * @param key
+     * @return
+     */
+    public boolean contains(K key) {
+        return get(key) != null;
+    }
+
+    /**
+     * Same as add but in reverse, Also refactors the linked list so that there
+     * are no nulls
+     *
+     * @param deleteKey
+     * @return
+     */
+    public boolean remove(K deleteKey) {
+
+        int hash = hash(deleteKey);
+
+        if (table[hash] == null) {
+            return false;
+        } else {
+            Entry<K> previous = null;
+            Entry<K> current = table[hash];
+
+            while (current != null) {
+                if (current.key.equals(deleteKey)) {
+                    if (previous == null) {
+                        table[hash] = table[hash].next;
+                        this.size--;
+                        return true;
+                    } else {
+                        previous.next = current.next;
+                        this.size--;
+                        return true;
+                    }
+                }
+                previous = current;
+                current = current.next;
+            }
+            return false;
+        }
+
+    }
+
+    public int size() {
+        return size;
+    }
+
+    private int hash(Object key) {
+        return Math.abs(key.hashCode()) % capacity;
+    }
+
 }
