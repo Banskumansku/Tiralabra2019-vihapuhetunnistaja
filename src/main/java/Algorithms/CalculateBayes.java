@@ -17,14 +17,14 @@ public class CalculateBayes {
      * @return boolean of hatespeech
      */
     public static boolean calculateBayes(Word line[]) {
-        double probabilityOfPositiveProduct = 1.0;
-        double probabilityOfNegativeProduct = 1.0;
+        double probabilityOfPositiveProduct = Math.log(1.0);
+        double probabilityOfNegativeProduct = Math.log(1.0);
         for (Word word : line) {
-            probabilityOfPositiveProduct *= word.getProbOfHate();
-            probabilityOfNegativeProduct *= (1.0 - word.getProbOfHate());
+            probabilityOfPositiveProduct += Math.log(word.getProbOfHate());
+            probabilityOfNegativeProduct += Math.log(1.0 - word.getProbOfHate());
         }
-        double probOfHate = probabilityOfPositiveProduct / (probabilityOfPositiveProduct + probabilityOfNegativeProduct);
-        return probOfHate > 0.75;
+        double probOfHate = Math.exp(probabilityOfPositiveProduct) / (Math.exp(probabilityOfPositiveProduct) + Math.exp(probabilityOfNegativeProduct));
+        return Math.exp(probOfHate) > 0.75;
     }
 
     /**
@@ -33,13 +33,13 @@ public class CalculateBayes {
      * @return probablity of hate speech
      */
     public static double percentageBayes(Word line[]) {
-        double probabilityOfPositiveProduct = 1.0f;
-        double probabilityOfNegativeProduct = 1.0f;
+        double probabilityOfPositiveProduct = Math.log(1.0);
+        double probabilityOfNegativeProduct = Math.log(1.0);
         for (Word word : line) {
-            probabilityOfPositiveProduct *= word.getProbOfHate();
-            probabilityOfNegativeProduct *= (1.0 - word.getProbOfHate());
+            probabilityOfPositiveProduct += Math.log(word.getProbOfHate());
+            probabilityOfNegativeProduct += Math.log(1.0 - word.getProbOfHate());
         }
-        double probOfHate = probabilityOfPositiveProduct / (probabilityOfPositiveProduct + probabilityOfNegativeProduct);
+        double probOfHate = Math.exp(probabilityOfPositiveProduct) / (Math.exp(probabilityOfPositiveProduct) + Math.exp(probabilityOfNegativeProduct));
         if (probOfHate < 0.01) {
             return 0.01;
         } 
