@@ -7,9 +7,9 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>CSVParser</groupId>
-            <artifactId>CSVParser</artifactId>
-            <version>1.0</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.5</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

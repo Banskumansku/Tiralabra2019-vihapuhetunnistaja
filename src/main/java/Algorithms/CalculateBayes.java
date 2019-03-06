@@ -24,7 +24,7 @@ public class CalculateBayes {
             probabilityOfNegativeProduct += Math.log(1.0 - word.getProbOfHate());
         }
         double probOfHate = Math.exp(probabilityOfPositiveProduct) / (Math.exp(probabilityOfPositiveProduct) + Math.exp(probabilityOfNegativeProduct));
-        return Math.exp(probOfHate) > 0.75;
+        return Math.exp(probOfHate) < 0.75;
     }
 
     /**

@@ -46,11 +46,12 @@ public class CalculateBayesTest {
         System.out.println("calculateBayes");
         Word line[] = new Word[1];
         Word word = new Word("test");
-        word.setProbOfHate((float) 0.5);
+        word.setProbOfHate(0.5);
         line[0] = word;
         
         boolean expResult = false;
         boolean result = CalculateBayes.calculateBayes(line);
+        System.out.println(CalculateBayes.percentageBayes(line));
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
@@ -63,9 +64,9 @@ public class CalculateBayesTest {
         System.out.println("percentageBayes");
         Word line[] = new Word[1];
         Word word = new Word("test");
-        word.setProbOfHate((double) 0.5);
+        word.setProbOfHate(0.5);
         line[0] = word;
-        double expResult = 0.5f;
+        double expResult = 0.5;
         double result = CalculateBayes.percentageBayes(line);
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
