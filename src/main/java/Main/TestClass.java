@@ -69,6 +69,9 @@ public class TestClass {
 
     //return chance of being hatespeech
     public String isIthate(String line) {
+        if (!Character.isAlphabetic(0) && line.length() == 1) {
+            line = "ThisIsNotAString";
+        }
         return "Your string is hatespeech with the probablity of " + CalculateBayes.percentageBayes(c.testClassifier(line));
     }
 
