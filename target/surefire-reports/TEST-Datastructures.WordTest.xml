@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="Datastructures.WordTest" time="0.004" errors="0" skipped="0">
+<testsuite tests="9" failures="0" name="Datastructures.WordTest" time="0.018" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_144\jre\bin"/>
@@ -61,13 +61,13 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="Datastructures.WordTest" name="testSetNormRate" time="0"/>
+  <testcase classname="Datastructures.WordTest" name="testSetNormRate" time="0.017"/>
   <testcase classname="Datastructures.WordTest" name="testGetNormRate" time="0"/>
   <testcase classname="Datastructures.WordTest" name="testGetWord" time="0"/>
   <testcase classname="Datastructures.WordTest" name="testCalculateProbability" time="0"/>
   <testcase classname="Datastructures.WordTest" name="testGetProbOfHate" time="0"/>
-  <testcase classname="Datastructures.WordTest" name="testSetProbOfHate" time="0.001"/>
+  <testcase classname="Datastructures.WordTest" name="testSetProbOfHate" time="0"/>
   <testcase classname="Datastructures.WordTest" name="testGetHateRate" time="0"/>
-  <testcase classname="Datastructures.WordTest" name="testCountHate" time="0.001"/>
+  <testcase classname="Datastructures.WordTest" name="testCountHate" time="0"/>
   <testcase classname="Datastructures.WordTest" name="testCountNorm" time="0"/>
 </testsuite>

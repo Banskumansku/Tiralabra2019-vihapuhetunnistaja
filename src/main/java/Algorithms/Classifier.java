@@ -128,6 +128,10 @@ public class Classifier {
                     wordObjects.put(wordString, w);
                     wordObj[amount] = w;
                     amount++;
+                } else {
+                    Word word = new Word("notaword");
+                    wordObj[amount] = word;
+                    amount++;
                 }
             } else if (wordObjects.contains(wordString)) {
                 wordObj[amount] = this.wordObjects.get(wordString);

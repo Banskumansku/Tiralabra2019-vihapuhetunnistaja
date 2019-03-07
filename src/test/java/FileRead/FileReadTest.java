@@ -5,13 +5,13 @@
  */
 package FileRead;
 
-import java.util.HashSet;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import Datastructures.Set;
 
 /**
  *
@@ -45,7 +45,7 @@ public class FileReadTest {
     public void testImportStopword() {
         System.out.println("importStopword");
         FileRead instance = new FileRead();
-        HashSet<String> result = instance.importStopword();
+        Set<String> result = instance.importStopword();
         assertTrue(result.contains("and"));
         // TODO review the generated test code and remove the default call to fail.
     }

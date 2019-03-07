@@ -9,10 +9,8 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.HashSet;
+import Datastructures.Set;
 
 /**
  *
@@ -32,9 +30,9 @@ public class FileRead {
      *
      * @return makes stopword set to be used in classifying
      */
-    public HashSet<String> importStopword() {
+    public Set<String> importStopword() {
         //this method is only used for importing the stopwords
-        HashSet<String> set = new HashSet<>();
+        Set<String> set = new Set<>();
         String fileName = System.getProperty("user.dir") + "/lib/stopwords.txt";
         try {
             this.scanner = new Scanner(new File(fileName));
@@ -54,14 +52,15 @@ public class FileRead {
      */
     public boolean openFile() {
         Scanner asker = new Scanner(System.in);
-        System.out.println("Give the name of the file \nMust be in .txt format");
+        System.out.println("Give the name of the file \nMust be in .txt format and in working directory");
         // this will be used for inputting various training files etc
         // stopwords and lemmatizations will be done when built
-        String fileName = asker.nextLine();
+        String add = asker.nextLine();
+        String fileName = System.getProperty("user.dir") + "/lib/" + add;
         try {
             this.scanner = new Scanner(new File(fileName));
             Path path = Paths.get(fileName);
-            rowCount = (int) Files.lines(path).count();
+            this.rowCount = (int) Files.lines(path).count();
             return true;
         } catch (Exception e) {
             System.err.println("No file found");
@@ -75,13 +74,14 @@ public class FileRead {
      */
     public String[] readFile() {
 
-        String[] lista = new String[rowCount];
+        String[] lista = new String[this.rowCount];
         int index = 0;
         while (this.scanner.hasNext()) {
             //lista.add(this.scanner.next());
             lista[index] = this.scanner.nextLine();
+            index++;
         }
-        scanner.close();
+        this.scanner.close();
         return lista;
     }
 }

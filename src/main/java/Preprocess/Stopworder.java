@@ -6,20 +6,19 @@
 package Preprocess;
 
 import FileRead.FileRead;
-import java.util.HashSet;
+import Datastructures.Set;
 
 /**
  *
  * @author jan
  */
 public class Stopworder {
-    private HashSet<String> stopwordlist;
+    private Set<String> stopwordlist;
             
 
     public Stopworder() {
         FileRead fr = new FileRead();
         this.stopwordlist = fr.importStopword();
-
     }
     // will use self made hashset in the end
     public boolean isItStop(String word) {

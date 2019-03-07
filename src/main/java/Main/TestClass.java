@@ -19,7 +19,8 @@ public class TestClass {
 
     public TestClass(String file) {
         FileRead fileRead = new FileRead();
-        Set<String> stopwords = new Set<>();
+        Set<String> stopwords;
+        stopwords = fileRead.importStopword();
                 
         switch (file) {
             case "defaultDatasetTest":
